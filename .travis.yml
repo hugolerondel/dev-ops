@@ -1,3 +1,4 @@
 language: java
 script:
  - mvn clean verify --file ./simple-api/pom.xml
+ - docker login -u $DOCKERHUB_ID -p $DOCKERHUB_PWD
