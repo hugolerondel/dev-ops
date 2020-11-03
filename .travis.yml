@@ -12,8 +12,6 @@ script:
  - docker push $DOCKERHUB_ID/project-tp2:httpd
  - docker push $DOCKERHUB_ID/project-tp2:simple-api
 
- - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hugolerondel_dev-ops
-
 addons:
  sonarcloud:
   organization: "hugolerondel"
