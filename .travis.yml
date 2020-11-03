@@ -1,6 +1,7 @@
 language: java
 script:
- - mvn clean verify --file ./simple-api/pom.xml
+ - mvn clean verify --file ./simple-api/pom.xml org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hugolerondel_dev-ops
+
  - docker login -u $DOCKERHUB_ID -p $DOCKERHUB_PWD
 
  - docker build -t $DOCKERHUB_ID/project-tp2:database database
@@ -11,7 +12,7 @@ script:
  - docker push $DOCKERHUB_ID/project-tp2:httpd
  - docker push $DOCKERHUB_ID/project-tp2:simple-api
 
- - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hugolerondel_dev-ops
+ - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hugolerondel_dev-ops
 
 addons:
  sonarcloud:
