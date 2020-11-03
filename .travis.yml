@@ -1,6 +1,8 @@
 language: java
 script:
- - mvn clean verify --file ./simple-api/pom.xml org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hugolerondel_dev-ops
+ - cd ./simple-api/
+ - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=hugokey
+ - cd ..
 
  - docker login -u $DOCKERHUB_ID -p $DOCKERHUB_PWD
 
@@ -12,9 +14,9 @@ script:
  - docker push $DOCKERHUB_ID/project-tp2:httpd
  - docker push $DOCKERHUB_ID/project-tp2:simple-api
 
+
 addons:
  sonarcloud:
-  organization: "hugolerondel"
-  token:
-   secure: "$SONARCLOUD_TOKEN"
+  organization: "hugokey"
+  token: "$SONARCLOUD_TOKEN"
 
