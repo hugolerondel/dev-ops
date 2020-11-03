@@ -3,7 +3,10 @@ script:
  - mvn clean verify --file ./simple-api/pom.xml
  - docker login -u $DOCKERHUB_ID -p $DOCKERHUB_PWD
 
- - docker-compose up
+ - docker build -t $DOCKERHUB_ID/project-tp2:database database
+ - docker build -t $DOCKERHUB_ID/project-tp2:httpd httpd
+ - docker build -t $DOCKERHUB_ID/project-tp2:simple-api simple-api
 
- - docker tag  project-tp2 $DOCKERHUB_ID/project-tp2:1.0
- - docker push $DOCKERHUB_ID/project-tp2-v1:1.0
+ - docker push $DOCKERHUB_ID/project-tp2:database
+ - docker push $DOCKERHUB_ID/project-tp2:httpd
+ - docker push $DOCKERHUB_ID/project-tp2:simple-api
