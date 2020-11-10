@@ -14,7 +14,7 @@ script:
  - docker push $DOCKERHUB_ID/project-tp2:database
  - docker push $DOCKERHUB_ID/project-tp2:httpd
  - docker push $DOCKERHUB_ID/project-tp2:simple-api
- - docker push $DOCKERHUB_ID/project-tp2:front
+ - docker push $DOCKERHUB_ID/project-tp2:simple-api
 
 
 addons:
