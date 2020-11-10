@@ -21,11 +21,21 @@ services:
     container_name: reverse_proxy
     build: ./httpd
     ports:
+      - "8080:8080"
       - "80:80"
     networks:
       - app-network
     depends_on:
       - backend
+      -
+  front:
+    container_name: front
+    build: ./front
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+
 
 volumes:
   my_db_volume:
