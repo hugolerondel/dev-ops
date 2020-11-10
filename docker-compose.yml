@@ -21,7 +21,6 @@ services:
     container_name: reverse_proxy
     build: ./httpd
     ports:
-      - "8080:80"
       - "80:80"
     networks:
       - app-network
@@ -31,6 +30,8 @@ services:
   front:
     container_name: front
     build: ./front
+    ports:
+      -"80:80"
     networks:
       - app-network
 
