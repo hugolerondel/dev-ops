@@ -25,6 +25,8 @@ services:
       - "80:80"
     networks:
       - app-network
+    depends_on:
+      - backend
 
   front:
     container_name: front
